@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="~{fragments/layout.html :: head}"></head>
+<body class="bg-dark mx-3 text-white">
+<header th:replace="~{fragments/layout.html :: header}"></header>
+
+<div class="d-flex flex-wrap gap-3 justify-content-center">
+    <form th:action="@{/bob}" th:object="${bobDTO}" class="d-flex flex-column gap-4"
+          method="post">
+        <div class="form-group">
+            <label for="input">Input bin</label>
+            <input type="number" th:field="*{input}" class="form-control" id="input" placeholder="10101010">
+        </div>
+
+        <div class="form-group">
+            <button class="btn btn-success align-self-start" type="submit">Generate</button>
+        </div>
+    </form>
+</div>
+<div class="d-flex flex-column gap-3 my-5 justify-content-center align-items-center">
+    <div class="d-flex gap-3">
+        <h2>Input: </h2>
+        <h2 th:text="${input}"></h2>
+    </div>
+    <div class="d-flex gap-3">
+        <h2>Is wrong </h2>
+        <h2 th:text="${isWrong}"></h2>
+    </div>
+    <div class="d-flex gap-3">
+        <h2>Wrong position: </h2>
+        <h2 th:text="${wrongP}"></h2>
+    </div>
+    <div class="d-flex gap-3">
+        <h2>Repaired: </h2>
+        <h2 th:each="code: ${repaired}">
+            <p class="text-success" th:text="${code}"></p>
+        </h2>
+    </div>
+</div>
+</body>
+</html>

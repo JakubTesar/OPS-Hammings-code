@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="~{fragments/layout.html :: head}"></head>
+<body class="bg-dark mx-3 text-white">
+<header th:replace="~{fragments/layout.html :: header}"></header>
+
+<div class="d-flex flex-wrap gap-3 justify-content-center">
+    <form th:action="@{/alice}" th:object="${randomNumberDTO}" class="d-flex flex-column gap-4"
+          method="post">
+        <div class="form-group">
+            <label for="minNum">Min number</label>
+            <input type="number" th:field="*{min}" class="form-control" id="minNum" placeholder="Min value">
+        </div>
+        <div class="form-group">
+            <label for="maxNum">Max number</label>
+            <input type="number" th:field="*{max}" class="form-control" id="maxNum" placeholder="Max value">
+        </div>
+        <div class="form-control">
+            <label for="hasWrong">Wrong bite</label>
+            <input type="checkbox" th:checked="*{wrong}" th:field="*{wrong}" class=" form-check-label" id="hasWrong">
+        </div>
+        <div class="form-group">
+            <button class="btn btn-success align-self-start" type="submit">Generate</button>
+        </div>
+    </form>
+</div>
+<div class="d-flex flex-column gap-3 my-5 justify-content-center align-items-center">
+    <div class="d-flex gap-3">
+        <h2>Random number: </h2>
+        <h2 th:text="${num}"></h2>
+    </div>
+    <div class="d-flex gap-3">
+        <h2>Binary number: </h2>
+        <h2 th:text="${binaryNum}"></h2>
+    </div>
+    <div class="d-flex gap-3">
+        <h2>Hamming code: </h2>
+        <h2 th:each="code: ${m}">
+            <p class="text-success" th:text="${code}"></p>
+        </h2>
+    </div>
+</div>
+</body>
+</html>
