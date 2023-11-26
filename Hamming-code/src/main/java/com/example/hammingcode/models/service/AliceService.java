@@ -22,9 +22,8 @@ public class AliceService {
         for (int i = numSplit.length - 1; i >= 0; i--) {
             m[i] = Integer.parseInt(numSplit[i]);
         }
-        m[4] = (m[0] + m[1] + m[3]) % 2;
-        m[5] = (m[0] + m[2] + m[3]) % 2;
-        m[6] = (m[1] + m[2] + m[3]) % 2;
+
+
         if (isWrong) m[(int) (Math.random() * 7)] = (m[(int) (Math.random() * 7)] + 1) % 2;
         return m;
     }

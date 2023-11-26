@@ -25,15 +25,16 @@ public class BobController {
 
         @PostMapping
         public String generateAnswer(@ModelAttribute BobDTO bobDTO, Model model) {
-            String[] mS = bobDTO.getInput().split("");
+            String[] mS = bobDTO.getBinInput().split("");
             int[] m = new int[mS.length];
             for (int i = 0; i < mS.length; i++) {
                 m[i] = Integer.parseInt(mS[i]);
             }
-            model.addAttribute("input", bobDTO);
+            model.addAttribute("binInput", bobDTO.getBinInput());
             model.addAttribute("wrongP", bobService.getWrongPosition(m));
             model.addAttribute("isWrong", bobService.isWrong(m));
             model.addAttribute("repaired", bobService.repair(m));
+            model.addAttribute("original", bobService.getOriginalNumber(m));
             return "bob/index";
         }
 

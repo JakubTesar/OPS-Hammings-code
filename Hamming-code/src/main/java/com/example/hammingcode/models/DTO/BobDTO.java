@@ -1,13 +1,14 @@
 package com.example.hammingcode.models.DTO;
 
 public class BobDTO {
-    private String input;
+    private String binInput;
 
-    public String getInput() {
-        return input;
+    public String getBinInput() {
+        return binInput;
     }
 
-    public void setInput(String input) {
-        this.input = input;
+    public void setBinInput(String binInput) {
+        this.binInput = binInput;
     }
+
 }
