@@ -3,6 +3,8 @@ package com.example.hammingcode.models.service;
 import com.example.hammingcode.models.DTO.RandomNumberDTO;
 import org.springframework.stereotype.Service;
 
+import java.util.Random;
+
 @Service
 public class AliceService {
 
@@ -25,8 +27,9 @@ public class AliceService {
         m[4] = (m[0] + m[1] + m[3]) % 2;
         m[5] = (m[0] + m[2] + m[3]) % 2;
         m[6] = (m[1] + m[2] + m[3]) % 2;
-
-        if (isWrong) m[(int) (Math.random() * 7)] = (m[(int) (Math.random() * 7)] + 1) % 2;
+        Random r = new Random();
+        int rand = r.nextInt(7);
+        if (isWrong) m[rand] = (m[rand] + 1) % 2;
         return m;
     }
 
